@@ -16,26 +16,25 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                VStack(spacing: 0) {
-                    ZStack {
-                        Image("MainHome")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 1)
-                            .clipped()
-                            .ignoresSafeArea(edges: .top)
-                        
-                        // Full-screen light opacity rectangle
-                        Rectangle()
-                            .fill(Color.black.opacity(0.4))
-                            .frame(width: geometry.size.width, height: geometry.size.height)
-                            .ignoresSafeArea(.all)
+                // Background image spanning entire screen
+                Image("MainHome")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .clipped()
+                    .ignoresSafeArea(.all)
+                
+                // Full-screen light opacity rectangle
+                Rectangle()
+                    .fill(Color.black.opacity(0.2))
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .ignoresSafeArea(.all)
                         
                         VStack {
                             Text("Florix.")
                                 .font(.custom("Baskervville-Regular", size: 45))
                                 .foregroundColor(.white)
-                                .padding(.top, 30)
+                                .padding(.top, 70)
                                 .padding(.leading, -174)
                             
                             
@@ -46,7 +45,7 @@ struct ContentView: View {
                             // Actual Search Bar
                             HStack {
                                 Image(systemName: "magnifyingglass")
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(.black)
                                     .font(.system(size: 18))
                                 
                                 TextField("Search for plants...", text: $searchText)
@@ -67,13 +66,13 @@ struct ContentView: View {
                             }
                             .padding(.horizontal, 16)
                             .padding(.vertical, 12)
-                            .background(Color.white.opacity(0.95))
+                            .background(Color.white.opacity(0.80))
                             .cornerRadius(25)
-                            .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                            .shadow(color: .black.opacity(0.01), radius: 4, x: 0, y: 2)
                             .padding(.horizontal, 30)
                             .padding(.leading, -10)
                             
-                            // PlantCircleWhite image with text inline and text below
+                            
                             VStack(spacing: 8) {
                                 HStack(spacing: 12) {
                                     Image("PlantCircleWhite")
@@ -124,39 +123,23 @@ struct ContentView: View {
                             
                             
                         }
-                        .padding(.top,-270)
-                        .padding(.bottom, 20)
-                    }
-                    
-                    Spacer()
-                }
+                        .padding(.top, -200)
+                        .padding(.bottom, 100)
                 
-                // White and black rectangles with fade animation
-                
-                
-                Rectangle() // bottom black box
-                    .fill(Color.white.opacity(1))
-                    .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
-                    .cornerRadius(60)
-                    .shadow(color: .black.opacity(0.2), radius: 12, x: 0, y: 6)
-                    .position(x: geometry.size.width / 2, y: geometry.size.height / 1.06)
-                    .opacity(isSearchFocused ? 0 : 1)
-                    .animation(.easeInOut(duration: 0.3), value: isSearchFocused)
             }
         }
-        .ignoresSafeArea(.keyboard, edges: .bottom)
-        .onAppear {
-            
-            withAnimation(.easeInOut(duration: 0.9)) {
-                imageOpacity = 1
-            }
-            
-            withAnimation(.easeInOut(duration: 0.8).delay(0.3)) {
-                textOpacity = 1
-            }
-        }
-    }
-}
+               .ignoresSafeArea(edges: .all)  // Changed this line
+               .onAppear {
+                   withAnimation(.easeInOut(duration: 0.9)) {
+                       imageOpacity = 1
+                   }
+                   
+                   withAnimation(.easeInOut(duration: 0.8).delay(0.3)) {
+                       textOpacity = 1
+                   }
+               }
+           }
+       }
     
 struct HomeSection: View {
     let title: String
