@@ -12,6 +12,7 @@ struct ContentView: View {
     @FocusState private var isSearchFocused: Bool
     @State private var imageOpacity: Double = 0
     @State private var textOpacity: Double = 0
+    @State private var isIndoor: Bool = true
     
     var body: some View {
         GeometryReader { geometry in
@@ -28,6 +29,14 @@ struct ContentView: View {
                 Rectangle()
                     .fill(Color.black.opacity(0.2))
                     .frame(width: geometry.size.width, height: geometry.size.height)
+                    .ignoresSafeArea(.all)
+                
+                // Grey rectangle at the bottom
+                RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .fill(Color.white.opacity(1))
+                    .frame(width: geometry.size.width, height: 600)
+                    .clipShape(TopCornersRounded(radius: 60))
+                    .position(x: geometry.size.width / 2, y: geometry.size.height - 60)
                     .ignoresSafeArea(.all)
                         
                         VStack {
@@ -62,6 +71,19 @@ struct ContentView: View {
                                             .foregroundColor(.gray)
                                             .font(.system(size: 16))
                                     }
+                                }
+                                
+                                // Toggle button for Indoor/Outdoor
+                                Button(action: {
+                                    isIndoor.toggle()
+                                }) {
+                                    Text(isIndoor ? "Indoor." : "Outdoor.")
+                                        .font(.custom("Baskervville-SemiBold", size: 14))
+                                        .foregroundColor(.black)
+                                        .padding(.vertical, 4)
+                                        .padding(.horizontal, 10)
+                                        .background(isIndoor ? Color(red: 144/255, green: 162/255, blue: 136/255).opacity(0.5) : Color(red: 33/255, green: 70/255, blue: 17/255).opacity(0.5))
+                                        .cornerRadius(12)
                                 }
                             }
                             .padding(.horizontal, 16)
@@ -138,9 +160,9 @@ struct ContentView: View {
                        textOpacity = 1
                    }
                }
-           }
-       }
-    
+    }
+}
+
 struct HomeSection: View {
     let title: String
     let systemImage: String
@@ -152,14 +174,13 @@ struct HomeSection: View {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .fill(LinearGradient(colors: [color.opacity(0.95), color.opacity(0.75)], startPoint: .topLeading, endPoint: .bottomTrailing))
                 .shadow(color: color.opacity(0.25), radius: 8, x: 0, y: 6)
-
             HStack(spacing: 12) {
                 Image(systemName: systemImage)
                     .font(.system(size: 28, weight: .semibold))
                     .foregroundColor(.white)
                     .frame(width: 44, height: 44)
                 Text(title)
-                    .font(.custom("Baskervville-SemiBold", size: 20))
+                    .font(.custom("Baskerville-SemiBold", size: 20))
                     .foregroundColor(.white)
                 Spacer()
             }
@@ -171,7 +192,25 @@ struct HomeSection: View {
     }
 }
 
+// Custom shape for rounding only top corners
+struct TopCornersRounded: Shape {
+    var radius: CGFloat = 30
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY + radius))
+        path.addQuadCurve(to: CGPoint(x: rect.minX + radius, y: rect.minY), control: CGPoint(x: rect.minX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX - radius, y: rect.minY))
+        path.addQuadCurve(to: CGPoint(x: rect.maxX, y: rect.minY + radius), control: CGPoint(x: rect.maxX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.closeSubpath()
+        return path
+    }
+}
+
 // Preview
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
