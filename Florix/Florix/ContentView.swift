@@ -33,10 +33,18 @@ struct ContentView: View {
                 
                 // Grey rectangle at the bottom
                 RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .fill(Color.white.opacity(1))
-                    .frame(width: geometry.size.width, height: 600)
+                    .fill(Color(red: 206/255, green: 190/255, blue: 164/255).opacity(1))
+                    .frame(width: geometry.size.width, height: 700)
                     .clipShape(TopCornersRounded(radius: 60))
                     .position(x: geometry.size.width / 2, y: geometry.size.height - 60)
+                    .ignoresSafeArea(.all)
+                
+                // Overlapping rectangle at the very bottom (464D20, reduced height)
+                RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .fill(Color(red: 70/255, green: 77/255, blue: 32/255).opacity(1))
+                    .frame(width: geometry.size.width, height: 400)
+                    .clipShape(TopCornersRounded(radius: 60))
+                    .position(x: geometry.size.width / 2, y: geometry.size.height - 90)
                     .ignoresSafeArea(.all)
                         
                         VStack {
@@ -118,7 +126,7 @@ struct ContentView: View {
                             .padding(.top, 20)
                             .padding(.leading, -10)
                             
-                            // Second PlantCircleWhite image with text (duplicate)
+                            // Second PlantCircleWhite
                             VStack(spacing: 8) {
                                 HStack(spacing: 12) {
                                     Image("SunPlantLight")
@@ -130,13 +138,7 @@ struct ContentView: View {
                                         .opacity(isSearchFocused ? 0 : imageOpacity)
                                         .animation(.easeInOut(duration: 0.3), value: isSearchFocused)
                                     
-                                    Text("Whether you’re curious, learning, or exploring outdoors, Florix makes plant knowledge effortlessly accessible")
-                                        .font(.custom("Baskervville-Regular", size: 16))
-                                        .foregroundColor(.white.opacity(1))
-                                        .multilineTextAlignment(.leading)
-                                        .padding(.horizontal, 5)
-                                        .opacity(isSearchFocused ? 0 : textOpacity)
-                                        .animation(.easeInOut(duration: 0.3), value: isSearchFocused)
+                                    
                                 }
                             }
                             .padding(.top, 10)
