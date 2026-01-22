@@ -25,27 +25,31 @@ struct ContentView: View {
                     .clipped()
                     .ignoresSafeArea(.all)
                 
-                // Full-screen light opacity rectangle
+                // Full-screen light opacity rectanglex
                 Rectangle()
                     .fill(Color.black.opacity(0.2))
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .ignoresSafeArea(.all)
                 
-                // Grey rectangle at the bottom
+                // GREEN RECTANGLE
+                RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .fill(Color(red: 70/255, green: 77/255, blue: 32/255).opacity(1))
+                    .frame(width: geometry.size.width, height: 900)
+                    .clipShape(TopCornersRounded(radius: 60))
+                    .position(x: geometry.size.width / 2, y: geometry.size.height - 90)
+                    .ignoresSafeArea(.all)
+              
+                
+                // CREAM RECTANGLE
                 RoundedRectangle(cornerRadius: 30, style: .continuous)
                     .fill(Color(red: 206/255, green: 190/255, blue: 164/255).opacity(1))
-                    .frame(width: geometry.size.width, height: 700)
+                    .frame(width: geometry.size.width, height: 600)
                     .clipShape(TopCornersRounded(radius: 60))
                     .position(x: geometry.size.width / 2, y: geometry.size.height - 60)
                     .ignoresSafeArea(.all)
                 
                 // Overlapping rectangle at the very bottom (464D20, reduced height)
-                RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .fill(Color(red: 70/255, green: 77/255, blue: 32/255).opacity(1))
-                    .frame(width: geometry.size.width, height: 400)
-                    .clipShape(TopCornersRounded(radius: 60))
-                    .position(x: geometry.size.width / 2, y: geometry.size.height - 90)
-                    .ignoresSafeArea(.all)
+                
                         
                         VStack {
                             Text("Florix.")
@@ -90,7 +94,7 @@ struct ContentView: View {
                                         .foregroundColor(.black)
                                         .padding(.vertical, 4)
                                         .padding(.horizontal, 10)
-                                        .background(isIndoor ? Color(red: 144/255, green: 162/255, blue: 136/255).opacity(0.5) : Color(red: 33/255, green: 70/255, blue: 17/255).opacity(0.5))
+                                        .background(isIndoor ? Color(red: 70/255, green: 77/255, blue: 32/255).opacity(0.5) : Color(red: 206/255, green: 190/255, blue: 164/255).opacity(0.5))
                                         .cornerRadius(12)
                                 }
                             }
@@ -129,7 +133,7 @@ struct ContentView: View {
                             // Second PlantCircleWhite
                             VStack(spacing: 8) {
                                 HStack(spacing: 12) {
-                                    Image("SunPlantLight")
+                                    Image("")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 30, height: 30)
