@@ -29,27 +29,102 @@ struct ContentView: View {
                 Rectangle()
                     .fill(Color.black.opacity(0.2))
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                    .ignoresSafeArea(.all)
+                .ignoresSafeArea(.all)}
                 
                 // GREEN RECTANGLE
-                RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .fill(Color(red: 70/255, green: 77/255, blue: 32/255).opacity(1))
-                    .frame(width: geometry.size.width, height: 900)
-                    .clipShape(TopCornersRounded(radius: 60))
-                    .position(x: geometry.size.width / 2, y: geometry.size.height - 90)
-                    .ignoresSafeArea(.all)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .fill(Color(red: 70/255, green: 77/255, blue: 32/255).opacity(1))
+                        .frame(width: geometry.size.width, height: 900)
+                        .clipShape(TopCornersRounded(radius: 60))
+                        .position(x: geometry.size.width / 2, y: geometry.size.height - 90)
+                        .ignoresSafeArea(.all)
+                    
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Text("Search History.")
+                                .font(.custom("Baskervville-Regular", size: 24))
+                                .foregroundColor(.white)
+                                .padding(.leading, 40)
+                                .padding(.top, 120)
+                            Spacer()
+                            VStack(alignment: .trailing, spacing: 4) {
+                                Button(action: {
+                                    // Button action here
+                                }) {
+                                    HStack {
+                                        Image(systemName: "arrow.right")
+                                            .font(.system(size: 15, weight: .light))
+                                            .foregroundColor(.black)
+                                    }
+                                    .frame(width: 60)
+                                    .frame(height: 3)
+                                    .padding(.vertical, 10)
+                                    .background(RoundedRectangle(cornerRadius: 60).fill(Color(red: 233/255, green: 224/255, blue: 207/255)))
+                                }
+                                .padding(.top, 120)
+                            }
+                            .padding(.trailing, 24)
+                        }
+                        ZStack {
+                            // Fixed-size background for history text
+                            RoundedRectangle(cornerRadius: 18)
+                                .fill(Color.white.opacity(0.08))
+                                .frame(width: geometry.size.width - 48, height: 120)
+                            Text("The native range of this species is N. & W. Madagascar. It is a tree and grows primarily in the seasonally dry tropical biome. It is used as animal food, a poison, a medicine and invertebrate food, has environmental uses and for fuel and food.")
+                                .font(.custom("Baskervville-Regular", size: 15))
+                                .foregroundColor(.white.opacity(1))
+                                .frame(width: geometry.size.width - 64, height: 110, alignment: .topLeading)
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(nil)
+                                .padding(.leading, 16)
+                                .padding(.top, 8)
+                        }
+                        .padding(.top, -10)
+                        Spacer()
+                    }
+                    .frame(width: geometry.size.width, height: 900, alignment: .center)
+                    .padding(.top, geometry.size.height - 990) //
               
                 
                 // CREAM RECTANGLE
                 RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .fill(Color(red: 206/255, green: 190/255, blue: 164/255).opacity(1))
-                    .frame(width: geometry.size.width, height: 600)
+                        .fill(Color(red: 233/255, green: 224/255, blue: 207/255).opacity(1))
+                    .frame(width: geometry.size.width, height:550)
                     .clipShape(TopCornersRounded(radius: 60))
                     .position(x: geometry.size.width / 2, y: geometry.size.height - 60)
                     .ignoresSafeArea(.all)
                 
-                // Overlapping rectangle at the very bottom (464D20, reduced height)
-                
+                VStack {
+                    Spacer()
+                    HStack {
+                        Text("Plant Of The Day.")
+                            .font(.custom("Baskervville-Regular", size: 24))
+                            .foregroundColor(.black)
+                            .padding(.leading, 40)
+                            .padding(.top, 250)
+                        Spacer()
+                    }
+                    ZStack {
+                        // Make the background rectangle taller
+                        RoundedRectangle(cornerRadius: 18)
+                            .fill(Color.white.opacity(0.07))
+                            .frame(width: geometry.size.width - 48, height: 220)
+                        Text("Like The Plant List, the WFO Plant List is a working list of all known plant species, but differs in that it is curated by the international taxonomic community. The Plant List has not been updated since 2013. The WFO Plant List aims to provide the highest quality information on which to base research, conservation, and the sustainable use of the world’s biological resources. The WFO Plant List was launched in May 2021 as a next generation replacement for The Plant List, recognising the continuing need for a user-friendly, citable static list of all plant species. The WFO Plant List is a snapshot in time of the WFO Taxonomic Backbone – the dynamic global consensus classification used by WFO to organise and present floristic data. ")
+                            .font(.custom("Baskervville-Regular", size: 15))
+                            .foregroundColor(.black)
+                            .frame(width: geometry.size.width - 64, height: 200, alignment: .topLeading)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(nil)
+                            .padding(.leading, 16)
+                            .padding(.top, -10)
+                    }
+                    .padding(.top, -10)
+                    Spacer()
+                }
+                .frame(width: geometry.size.width, height: 550, alignment: .center)
+                .padding(.top, geometry.size.height - 610)
                         
                         VStack {
                             Text("Florix.")
@@ -119,7 +194,7 @@ struct ContentView: View {
                                         .animation(.easeInOut(duration: 0.3), value: isSearchFocused)
                                     
                                     Text("Florix uses intelligent databases to identify plants in seconds. Discover detailed plant profiles, track your finds, and grow your botanical knowledge effortlessly. ")
-                                        .font(.custom("Baskervville-Regular", size: 16))
+                                        .font(.custom("Baskerville-Regular", size: 16))
                                         .foregroundColor(.white.opacity(1))
                                         .multilineTextAlignment(.leading)
                                         .padding(.horizontal, 5)
