@@ -25,7 +25,7 @@ struct ContentView: View {
                     .clipped()
                     .ignoresSafeArea(.all)
                 
-                // Full-screen light opacity rectanglex
+                // Full-screen light opacity rectangle
                 Rectangle()
                     .fill(Color.black.opacity(0.2))
                     .frame(width: geometry.size.width, height: geometry.size.height)
@@ -58,7 +58,7 @@ struct ContentView: View {
                                             .font(.system(size: 15, weight: .light))
                                             .foregroundColor(.black)
                                     }
-                                    .frame(width: 60)
+                                    .frame(width: 45)
                                     .frame(height: 3)
                                     .padding(.vertical, 10)
                                     .background(RoundedRectangle(cornerRadius: 60).fill(Color(red: 233/255, green: 224/255, blue: 207/255)))
@@ -79,7 +79,7 @@ struct ContentView: View {
                                 .multilineTextAlignment(.leading)
                                 .lineLimit(nil)
                                 .padding(.leading, 16)
-                                .padding(.top, 8)
+                                .padding(.top, 20)
                         }
                         .padding(.top, -10)
                         Spacer()
