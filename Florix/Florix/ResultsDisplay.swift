@@ -40,29 +40,36 @@ struct ResultsDisplay: View {
                     .frame(maxWidth: .infinity, maxHeight: 280, alignment: .topLeading)
                 }
                 // Cream Rectangle
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color(red: 233/255, green: 224/255, blue: 207/255).opacity(1))
-                    .clipShape(TopCornersRounded(radius: 80))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                    .padding(.top, -140) // overlap
-                    .ignoresSafeArea(edges: .bottom)
-                    .overlay(
-                        VStack(spacing: 24) {
-                            Spacer().frame(height: 40)
-                            ForEach(0..<3) { i in
-                                RoundedRectangle(cornerRadius: 18)
-                                    .fill(Color.white.opacity(0.5))
-                                    .frame(height: 70)
-                                    .overlay(
-                                        Text("Section \(i+1)")
-                                            .font(.custom("Baskervville-Regular", size: 20))
-                                            .foregroundColor(Color(red: 70/255, green: 77/255, blue: 32/255))
-                                    )
-                                    .padding(.horizontal, 32)
-                            }
-                            Spacer()
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color(red: 233/255, green: 224/255, blue: 207/255).opacity(1))
+                        .clipShape(TopCornersRounded(radius: 80))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                        .padding(.top, -140) // overlap
+                        .ignoresSafeArea(edges: .bottom)
+                    GeometryReader { geo in
+                        ZStack {
+                            // Section 1
+                            RoundedRectangle(cornerRadius: 18)
+                                .fill(Color.white.opacity(0.5))
+                                .frame(height: 200)
+                                .frame(width: geo.size.width - 64)
+                                .position(x: geo.size.width / 2, y: -10)
+                            // Section 2
+                            RoundedRectangle(cornerRadius: 18)
+                                .fill(Color.white.opacity(0.5))
+                                .frame(height: 150)
+                                .frame(width: geo.size.width - 64)
+                                .position(x: geo.size.width / 2, y: geo.size.height / 2.5)
+                            // Section 3
+                            RoundedRectangle(cornerRadius: 18)
+                                .fill(Color.white.opacity(0.5))
+                                .frame(height: 150)
+                                .frame(width: geo.size.width - 64)
+                                .position(x: geo.size.width / 2, y: geo.size.height / 1.3)
                         }
-                    )
+                    }
+                }
             }
         }
     }
