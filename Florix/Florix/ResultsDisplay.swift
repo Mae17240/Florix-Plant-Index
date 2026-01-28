@@ -46,6 +46,23 @@ struct ResultsDisplay: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
                     .padding(.top, -140) // overlap
                     .ignoresSafeArea(edges: .bottom)
+                    .overlay(
+                        VStack(spacing: 24) {
+                            Spacer().frame(height: 40)
+                            ForEach(0..<3) { i in
+                                RoundedRectangle(cornerRadius: 18)
+                                    .fill(Color.white.opacity(0.5))
+                                    .frame(height: 70)
+                                    .overlay(
+                                        Text("Section \(i+1)")
+                                            .font(.custom("Baskervville-Regular", size: 20))
+                                            .foregroundColor(Color(red: 70/255, green: 77/255, blue: 32/255))
+                                    )
+                                    .padding(.horizontal, 32)
+                            }
+                            Spacer()
+                        }
+                    )
             }
         }
     }
