@@ -57,55 +57,52 @@ struct ResultsDisplay: View {
                         // Content inside cream card - frame matches creamHeight so internal elements stay fixed
                         VStack(spacing: 20) {
                             // Section 1 - Plant desc
-                            RoundedRectangle(cornerRadius: 18)
-                                .fill(Color.white.opacity(0.5))
-                                .frame(height: 200)
-                                .frame(maxWidth: .infinity)
-                                .padding(.horizontal, 32)
-                                .overlay(alignment: .topLeading) {
-                                    Text("Plant description placeholder text goes here. This section will contain a summary or details about the plant.")
-                                        .font(.custom("Baskervville-Regular", size: 18))
-                                        .foregroundColor(.black)
-                                        .padding(16)
-                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                                }
-                                .clipShape(RoundedRectangle(cornerRadius: 18))
-
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("Plant description placeholder text goes here. This section will contain a summary or details about the plant.")
+                                    .font(.custom("Baskervville-Regular", size: 18))
+                                    .foregroundColor(.black)
+                                    .multilineTextAlignment(.leading)
+                                Spacer()
+                            }
+                            .padding(16)
+                            .frame(height: 200)
+                            .frame(maxWidth: .infinity)
+                            .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0.5)))
+                            .padding(.horizontal, 32)
+                            .clipped()
+                            
                             // Section 2 - Plant care
-                            RoundedRectangle(cornerRadius: 18)
-                                .fill(Color.white.opacity(0.5))
-                                .frame(height: 150)
-                                .frame(maxWidth: .infinity)
-                                .padding(.horizontal, 32)
-                                .overlay(alignment: .topLeading) {
-                                    VStack(alignment: .leading, spacing: 6) {
-                                        Text("Care")
-                                            .font(.custom("Baskervville-Regular", size: 18))
-                                            .foregroundColor(.black)
-                                        Text("Water weekly • Bright, indirect light")
-                                            .font(.custom("Baskervville-Regular", size: 14))
-                                            .foregroundColor(.black.opacity(0.85))
-                                    }
-                                    .padding(16)
-                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                                }
-                                .clipShape(RoundedRectangle(cornerRadius: 18))
-
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text("Care")
+                                    .font(.custom("Baskervville-Regular", size: 18))
+                                    .foregroundColor(.black)
+                                Text("Water weekly • Bright, indirect light")
+                                    .font(.custom("DMSansBold", size: 14))
+                                    .foregroundColor(.black.opacity(0.85))
+                                Spacer()
+                            }
+                            .padding(16)
+                            .frame(height: 150)
+                            .frame(maxWidth: .infinity)
+                            .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0.5)))
+                            .padding(.horizontal, 32)
+                            .clipped()
+                            
                             // Section 3 - Extra plant info
-                            RoundedRectangle(cornerRadius: 18)
-                                .fill(Color.white.opacity(0.5))
-                                .frame(height: 150)
-                                .frame(maxWidth: .infinity)
-                                .padding(.horizontal, 32)
-                                .overlay(alignment: .topLeading) {
-                                    Text("Extra plant info placeholder text goes here. This section will contain additional information about the plant.")
-                                        .font(.custom("Baskervville-Regular", size: 16))
-                                        .foregroundColor(.black)
-                                        .padding(16)
-                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                                }
-                                .clipShape(RoundedRectangle(cornerRadius: 18))
-
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text("Extra plant info placeholder text goes here. This section will contain additional information about the plant.")
+                                    .font(.custom("Baskervville-Regular", size: 16))
+                                    .foregroundColor(.black)
+                                    .multilineTextAlignment(.leading)
+                                Spacer()
+                            }
+                            .padding(16)
+                            .frame(height: 150)
+                            .frame(maxWidth: .infinity)
+                            .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0.5)))
+                            .padding(.horizontal, 32)
+                            .clipped()
+                            
                             Spacer()
                         }
                         .frame(width: geo.size.width, height: creamHeight)
@@ -126,3 +123,4 @@ struct ResultsDisplay_Previews: PreviewProvider {
         ResultsDisplay()
     }
 }
+
