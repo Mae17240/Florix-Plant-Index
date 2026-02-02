@@ -46,60 +46,153 @@ struct ResultsDisplay: View {
                     .frame(width: geo.size.width, height: imageHeight)
                     .position(x: geo.size.width / 2, y: imageHeight / 2)
                     
-                    // Cream card positioned absolutely so changing its height doesn't affect the image
+                    // Cream card
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color(red: 233/255, green: 224/255, blue: 207/255))
-                            .clipShape(TopCornersRounded(radius: 80))
+                            .clipShape(TopCornersRounded(radius: 60))
                             .frame(width: geo.size.width, height: creamHeight)
                             .ignoresSafeArea(edges: .bottom)
                         
-                        // Content inside cream card - frame matches creamHeight so internal elements stay fixed
+                        // Content inside cream card
                         VStack(spacing: 20) {
+                            
+                            
                             // Section 1 - Plant desc
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Plant description placeholder text goes here. This section will contain a summary or details about the plant.")
-                                    .font(.custom("Baskervville-Regular", size: 18))
+                                Text("Snake plants are one of the most popular houseplants, for good reason. It's incredibly drought-tolerant, with the ability to go weeks without water in low and medium lighting conditions. They tolerate low light (hence why they're so often seen in office buildings) but will thrive in bright light, sending up new leaves and stronger variegation.")
+                                    
+                                    .font(.custom("Baskervville-Regular", size: 15))
                                     .foregroundColor(.black)
                                     .multilineTextAlignment(.leading)
                                 Spacer()
                             }
-                            .padding(16)
+                            .padding(10)
                             .frame(height: 200)
                             .frame(maxWidth: .infinity)
                             .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0.5)))
                             .padding(.horizontal, 32)
+                            
                             .clipped()
                             
                             // Section 2 - Plant care
                             VStack(alignment: .leading, spacing: 6) {
-                                Text("Care")
-                                    .font(.custom("Baskervville-Regular", size: 18))
-                                    .foregroundColor(.black)
-                                Text("Water weekly • Bright, indirect light")
-                                    .font(.custom("DMSansBold", size: 14))
-                                    .foregroundColor(.black.opacity(0.85))
+                                // 2x2 Grid of rectangles
+                                VStack(spacing: 10) {
+                                    HStack(spacing: 10) {
+                                        // Top left rectangle
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .fill(Color.white.opacity(0.7))
+                                            .frame(height: 50)
+                                            .overlay(
+                                                HStack(spacing: 8) {
+                                                    Image(systemName: "drop.fill")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 20, height: 20)
+                                                        .foregroundColor(.blue)
+                                                    
+                                                    Text("Water")
+                                                        .font(.custom("Baskervville-Regular", size: 14))
+                                                        .foregroundColor(.black)
+                                                    
+                                                    Spacer()
+                                                }
+                                                .padding(.horizontal, 15)
+                                            )
+                                        
+                                        // Top right rectangle
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .fill(Color.white.opacity(0.7))
+                                            .frame(height: 50)
+                                            .overlay(
+                                                HStack(spacing: 8) {
+                                                    Image(systemName: "sun.max.fill")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 20, height: 20)
+                                                        .foregroundColor(.orange)
+                                                    
+                                                    Text("Light")
+                                                        .font(.custom("Baskervville-Regular", size: 14))
+                                                        .foregroundColor(.black)
+                                                    
+                                                    Spacer()
+                                                }
+                                                .padding(.horizontal, 15)
+                                            )
+                                    }
+                                    
+                                    HStack(spacing: 10) {
+                                        // Bottom left rectangle
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .fill(Color.white.opacity(0.7))
+                                            .frame(height: 50)
+                                            .overlay(
+                                                HStack(spacing: 8) {
+                                                    Image(systemName: "thermometer")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 20, height: 20)
+                                                        .foregroundColor(.red)
+                                                    
+                                                    Text("25- 30")
+                                                        .font(.custom("Baskervville-Regular", size: 14))
+                                                        .foregroundColor(.black)
+                                                    
+                                                    Spacer()
+                                                }
+                                                .padding(.horizontal, 15)
+                                            )
+                                        
+                                        // Bottom right rectangle
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .fill(Color.white.opacity(0.7))
+                                            .frame(height: 50)
+                                            .overlay(
+                                                HStack(spacing: 8) {
+                                                    Image(systemName: "humidity.fill")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 20, height: 20)
+                                                        .foregroundColor(.cyan)
+                                                    
+                                                    Text("Humidity")
+                                                        .font(.custom("Baskervville-Regular", size: 14))
+                                                        .foregroundColor(.black)
+                                                    
+                                                    Spacer()
+                                                }
+                                                .padding(.horizontal, 15)
+                                            )
+                                    }
+                                }
+                                .padding(.horizontal, 8)
+                                
                                 Spacer()
+                                
+                                
                             }
-                            .padding(16)
+                            .padding(10)
                             .frame(height: 150)
                             .frame(maxWidth: .infinity)
-                            .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0.5)))
+                            .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0.4)))
                             .padding(.horizontal, 32)
                             .clipped()
                             
                             // Section 3 - Extra plant info
                             VStack(alignment: .leading, spacing: 6) {
-                                Text("Extra plant info placeholder text goes here. This section will contain additional information about the plant.")
-                                    .font(.custom("Baskervville-Regular", size: 16))
+                                Text("Snake plants are available in dozens of varieties and cultivars, with stiff-sword like leaves colored in bands of green, yellow, and cream. It's a hard-to-kill plant that makes it a go-to for any newer plant parent or anyone not interested in weekly watering duties.")
+                                
+                                    .font(.custom("Baskervville-Regular", size: 15))
                                     .foregroundColor(.black)
                                     .multilineTextAlignment(.leading)
                                 Spacer()
                             }
-                            .padding(16)
-                            .frame(height: 150)
+                            .padding(10)
+                            .frame(height: 170)
                             .frame(maxWidth: .infinity)
-                            .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0.5)))
+                            .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0)))
                             .padding(.horizontal, 32)
                             .clipped()
                             
@@ -107,9 +200,9 @@ struct ResultsDisplay: View {
                         }
                         .frame(width: geo.size.width, height: creamHeight)
                         .padding(.top, 12)
-                        .offset(y: 60) // move inner content downward inside the cream card
+                        .offset(y: 30) // move inner content downward inside the cream card
                     }
-                    // center x; y is imageHeight - overlap + (creamHeight/2)
+                    
                     .position(x: geo.size.width / 2, y: imageHeight - overlap + (creamHeight / 2.2))
                 }
                 .frame(width: geo.size.width, height: geo.size.height)
@@ -123,4 +216,3 @@ struct ResultsDisplay_Previews: PreviewProvider {
         ResultsDisplay()
     }
 }
-
