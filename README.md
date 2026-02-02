@@ -30,6 +30,8 @@ Florix is an **iOS Plant Index application** that allows users to **search for p
 * APIs, data models, and UI are subject to change
 * Code quality, readability, and scalability are priorities
 
-<img width="500" height="500" alt="new Homepage" src="https://github.com/user-attachments/assets/65c5202b-5752-41ae-b197-be651481808b" />
+<img width="600" height="600" alt="new Homepage" src="https://github.com/user-attachments/assets/65c5202b-5752-41ae-b197-be651481808b" />  
+<img width="600" height="600" alt="Overall Mockup" src="https://github.com/user-attachments/assets/01f3615b-58d6-4117-82ad-c13294969c18" />
+
 
 
