@@ -113,7 +113,7 @@ struct ResultsDisplay: View {
                                                         .frame(width: 30, height: 30)
                                                         .foregroundColor(.orange)
                                                     
-                                                    Text("Light")
+                                                    Text("Moderate")
                                                         .font(.custom("Baskervville-Regular", size: 14))
                                                         .foregroundColor(.black)
                                                     
@@ -151,13 +151,13 @@ struct ResultsDisplay: View {
                                             .frame(height: 50)
                                             .overlay(
                                                 HStack(spacing: 8) {
-                                                    Image(systemName: "humidity.fill")
+                                                    Image("Humid")
                                                         .resizable()
                                                         .scaledToFit()
                                                         .frame(width: 30, height: 30)
                                                         .foregroundColor(.cyan)
                                                     
-                                                    Text("Humidity")
+                                                    Text("Low Humidity")
                                                         .font(.custom("Baskervville-Regular", size: 14))
                                                         .foregroundColor(.black)
                                                     
@@ -182,7 +182,7 @@ struct ResultsDisplay: View {
                             
                             // Section 3 - Extra plant info
                             VStack(alignment: .leading, spacing: 6) {
-                                Text("Snake plants are available in dozens of varieties and cultivars, with stiff-sword like leaves colored in bands of green, yellow, and cream. It's a hard-to-kill plant that makes it a go-to for any newer plant parent or anyone not interested in weekly watering duties.")
+                                Text("Snake plants are available in dozens of varieties and cultivars, with stiff-sword like leaves colored in bands of green, yellow, and cream. It's a hard-to-kill plant that makes it a go-to for any newer plant parent or anyone not interested in weekly watering duties. and cream. It's a hard-to-kill plant that makes it a go-to for any newer plant parent or anyone not interested in weekly watering duties.and cream. It's a hard-to-kill plant that makes it a go-to for any newer plant parent or anyone not interested in weekly watering duties.")
                                 
                                     .font(.custom("Baskervville-Regular", size: 15))
                                     .foregroundColor(.black)
@@ -190,7 +190,7 @@ struct ResultsDisplay: View {
                                 Spacer()
                             }
                             .padding(10)
-                            .frame(height: 170)
+                            .frame(height: 250)
                             .frame(maxWidth: .infinity)
                             .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0)))
                             .padding(.horizontal, 32)

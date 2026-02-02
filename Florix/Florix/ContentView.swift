@@ -34,7 +34,7 @@ struct ContentView: View {
                 // GREEN RECTANGLE
                 ZStack {
                     RoundedRectangle(cornerRadius: 30, style: .continuous)
-                        .fill(Color(red: 70/255, green: 77/255, blue: 32/255).opacity(1))
+                        .fill(Color(red: 220/255, green: 211/255, blue: 182/255).opacity(1))
                         .frame(width: geometry.size.width, height: 900)
                         .clipShape(TopCornersRounded(radius: 60))
                         .position(x: geometry.size.width / 2, y: geometry.size.height - 90)
@@ -45,7 +45,7 @@ struct ContentView: View {
                         HStack {
                             Text("Search History.")
                                 .font(.custom("Baskervville-Regular", size: 24))
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .padding(.leading, 40)
                                 .padding(.top, 120)
                             Spacer()
@@ -74,7 +74,7 @@ struct ContentView: View {
                                 .frame(width: geometry.size.width - 48, height: 120)
                             Text("The native range of this species is N. & W. Madagascar. It is a tree and grows primarily in the seasonally dry tropical biome. It is used as animal food, a poison, a medicine and invertebrate food, has environmental uses and for fuel and food.")
                                 .font(.custom("Baskervville-Regular", size: 15))
-                                .foregroundColor(.white.opacity(1))
+                                .foregroundColor(.black)
                                 .frame(width: geometry.size.width - 64, height: 110, alignment: .topLeading)
                                 .multilineTextAlignment(.leading)
                                 .lineLimit(nil)
