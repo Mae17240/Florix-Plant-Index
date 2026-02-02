@@ -70,7 +70,7 @@ struct ResultsDisplay: View {
                             .padding(10)
                             .frame(height: 200)
                             .frame(maxWidth: .infinity)
-                            .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0.5)))
+                            .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0)))
                             .padding(.horizontal, 32)
                             
                             .clipped()
@@ -82,35 +82,35 @@ struct ResultsDisplay: View {
                                     HStack(spacing: 10) {
                                         // Top left rectangle
                                         RoundedRectangle(cornerRadius: 12)
-                                            .fill(Color.white.opacity(0.7))
+                                            .fill(Color.white.opacity(0))
                                             .frame(height: 50)
                                             .overlay(
                                                 HStack(spacing: 8) {
-                                                    Image(systemName: "drop.fill")
+                                                    Image("Water")
                                                         .resizable()
                                                         .scaledToFit()
-                                                        .frame(width: 20, height: 20)
+                                                        .frame(width: 30, height: 30)
                                                         .foregroundColor(.blue)
                                                     
-                                                    Text("Water")
+                                                    Text("Daily")
                                                         .font(.custom("Baskervville-Regular", size: 14))
                                                         .foregroundColor(.black)
                                                     
                                                     Spacer()
                                                 }
-                                                .padding(.horizontal, 15)
+                                                .padding(.horizontal, 5)
                                             )
                                         
                                         // Top right rectangle
                                         RoundedRectangle(cornerRadius: 12)
-                                            .fill(Color.white.opacity(0.7))
+                                            .fill(Color.white.opacity(0))
                                             .frame(height: 50)
                                             .overlay(
                                                 HStack(spacing: 8) {
-                                                    Image(systemName: "sun.max.fill")
+                                                    Image("Sun")
                                                         .resizable()
                                                         .scaledToFit()
-                                                        .frame(width: 20, height: 20)
+                                                        .frame(width: 30, height: 30)
                                                         .foregroundColor(.orange)
                                                     
                                                     Text("Light")
@@ -119,42 +119,42 @@ struct ResultsDisplay: View {
                                                     
                                                     Spacer()
                                                 }
-                                                .padding(.horizontal, 15)
+                                                .padding(.horizontal, 5)
                                             )
                                     }
                                     
                                     HStack(spacing: 10) {
                                         // Bottom left rectangle
                                         RoundedRectangle(cornerRadius: 12)
-                                            .fill(Color.white.opacity(0.7))
+                                            .fill(Color.white.opacity(0))
                                             .frame(height: 50)
                                             .overlay(
                                                 HStack(spacing: 8) {
-                                                    Image(systemName: "thermometer")
+                                                    Image("Temp")
                                                         .resizable()
                                                         .scaledToFit()
-                                                        .frame(width: 20, height: 20)
+                                                        .frame(width: 30, height: 30)
                                                         .foregroundColor(.red)
                                                     
                                                     Text("25- 30")
-                                                        .font(.custom("Baskervville-Regular", size: 14))
+                                                        .font(.custom("Baskervville-Regular", size: 15))
                                                         .foregroundColor(.black)
                                                     
                                                     Spacer()
                                                 }
-                                                .padding(.horizontal, 15)
+                                                .padding(.horizontal, 5)
                                             )
                                         
                                         // Bottom right rectangle
                                         RoundedRectangle(cornerRadius: 12)
-                                            .fill(Color.white.opacity(0.7))
+                                            .fill(Color.white.opacity(0))
                                             .frame(height: 50)
                                             .overlay(
                                                 HStack(spacing: 8) {
                                                     Image(systemName: "humidity.fill")
                                                         .resizable()
                                                         .scaledToFit()
-                                                        .frame(width: 20, height: 20)
+                                                        .frame(width: 30, height: 30)
                                                         .foregroundColor(.cyan)
                                                     
                                                     Text("Humidity")
@@ -163,7 +163,7 @@ struct ResultsDisplay: View {
                                                     
                                                     Spacer()
                                                 }
-                                                .padding(.horizontal, 15)
+                                                .padding(.horizontal, 5)
                                             )
                                     }
                                 }
@@ -174,9 +174,9 @@ struct ResultsDisplay: View {
                                 
                             }
                             .padding(10)
-                            .frame(height: 150)
+                            .frame(height: 100)
                             .frame(maxWidth: .infinity)
-                            .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0.4)))
+                            .background(RoundedRectangle(cornerRadius: 18).fill(Color.white.opacity(0)))
                             .padding(.horizontal, 32)
                             .clipped()
                             
