@@ -21,7 +21,7 @@ struct ContentView: View {
             GeometryReader { geometry in
                 ZStack {
                     // Background image spanning entire screen
-                    Image("MainHome")
+                    Image("Home3")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: geometry.size.width, height: geometry.size.height)
@@ -37,7 +37,7 @@ struct ContentView: View {
                     // GREEN RECTANGLE
                     ZStack {
                         RoundedRectangle(cornerRadius: 30, style: .continuous)
-                            .fill(Color(red: 70/255, green: 77/255, blue: 32/255).opacity(1))
+                            .fill(Color(red: 233/255, green: 224/255, blue: 207/255).opacity(1))
                             .frame(width: geometry.size.width, height: 900)
                             .clipShape(TopCornersRounded(radius: 60))
                             .position(x: geometry.size.width / 2, y: geometry.size.height - 90)
@@ -47,7 +47,7 @@ struct ContentView: View {
                         VStack {
                             Spacer()
                             HStack {
-                                Text("Search History.")
+                                Text("Database.")
                                     .font(.custom("Baskervville-Regular", size: 24))
                                     .foregroundColor(.black)
                                     .padding(.leading, 40)
@@ -74,7 +74,7 @@ struct ContentView: View {
                             ZStack {
                                 // Fixed-size background for history text
                                 RoundedRectangle(cornerRadius: 18)
-                                    .fill(Color.white.opacity(0.08))
+                                    .fill(Color.black.opacity(0))
                                     .frame(width: geometry.size.width - 48, height: 120)
                                 Text("The native range of this species is N. & W. Madagascar. It is a tree and grows primarily in the seasonally dry tropical biome. It is used as animal food, a poison, a medicine and invertebrate food, has environmental uses and for fuel and food.")
                                     .font(.custom("Baskervville-Regular", size: 15))
