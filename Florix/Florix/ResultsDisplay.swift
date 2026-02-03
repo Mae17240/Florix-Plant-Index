@@ -9,13 +9,17 @@ import Foundation
 import SwiftUI
 
 struct ResultsDisplay: View {
+    let plant: Plant
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         ZStack {
             Color(red: 233/255, green: 224/255, blue: 207/255).opacity(1)
                 .ignoresSafeArea()
             GeometryReader { geo in
                 // Parameters -> tweak these to change layout without moving other elements
-                let imageHeight: CGFloat = 280
+                let imageHeight: CGFloat = 320
                 let creamHeight: CGFloat = 700
                 let overlap: CGFloat = 100 // how much the cream card overlaps the image vertically
                 
@@ -28,15 +32,32 @@ struct ResultsDisplay: View {
                             .frame(width: geo.size.width, height: imageHeight)
                             .clipped()
                             .ignoresSafeArea(edges: .top)
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text("Orchid.")
-                                .font(.custom("Baskervville-Regular", size: 40))
+                        
+                        // Custom back button
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .font(.system(size: 20, weight: .semibold))
                                 .foregroundColor(.white)
-                                .padding(.leading, 45)
-                                .padding(.top, 40)
-                                .padding(.bottom, -10)
+                                .padding(12)
+                                .background(Color.black.opacity(0.3))
+                                .clipShape(Circle())
+                        }
+                        .padding(.leading, 16)
+                        .padding(.top, 50) // Position below status bar
+                        
+                        VStack(alignment: .leading, spacing: 0) {
+                            if let genus = plant.genus {
+                                Text("\(genus).")
+                                    .font(.custom("Baskervville-Regular", size: 40))
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 45)
+                                    .padding(.top, 40)
+                                    .padding(.bottom, -10)
+                            }
                             
-                            Text("Cattlea")
+                            Text(plant.commonName ?? plant.scientificName)
                                 .foregroundColor(.white)
                                 .font(.custom("DMSansBold", size: 20))
                                 .padding(.leading, 50)
@@ -60,7 +81,7 @@ struct ResultsDisplay: View {
                             
                             // Section 1 - Plant desc
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Snake plants are one of the most popular houseplants, for good reason. It's incredibly drought-tolerant, with the ability to go weeks without water in low and medium lighting conditions. They tolerate low light (hence why they're so often seen in office buildings) but will thrive in bright light, sending up new leaves and stronger variegation.")
+                                Text(plant.description ?? "Scientific Name: \(plant.scientificName)\n\nFamily: \(plant.family ?? "Unknown")\n\nThis plant information is provided by the GBIF database. For detailed care instructions and growing information, please consult botanical resources specific to this species.")
                                     
                                     .font(.custom("Baskervville-Regular", size: 15))
                                     .foregroundColor(.black)
@@ -92,7 +113,7 @@ struct ResultsDisplay: View {
                                                         .frame(width: 30, height: 30)
                                                         .foregroundColor(.blue)
                                                     
-                                                    Text("Daily")
+                                                    Text(plant.wateringFrequency ?? "Moderate")
                                                         .font(.custom("Baskervville-Regular", size: 14))
                                                         .foregroundColor(.black)
                                                     
@@ -113,7 +134,7 @@ struct ResultsDisplay: View {
                                                         .frame(width: 30, height: 30)
                                                         .foregroundColor(.orange)
                                                     
-                                                    Text("Moderate")
+                                                    Text(plant.lightRequirement ?? "Moderate")
                                                         .font(.custom("Baskervville-Regular", size: 14))
                                                         .foregroundColor(.black)
                                                     
@@ -136,7 +157,7 @@ struct ResultsDisplay: View {
                                                         .frame(width: 30, height: 30)
                                                         .foregroundColor(.red)
                                                     
-                                                    Text("25- 30")
+                                                    Text(plant.temperatureRange ?? "20-25°C")
                                                         .font(.custom("Baskervville-Regular", size: 15))
                                                         .foregroundColor(.black)
                                                     
@@ -157,7 +178,7 @@ struct ResultsDisplay: View {
                                                         .frame(width: 30, height: 30)
                                                         .foregroundColor(.cyan)
                                                     
-                                                    Text("Low Humidity")
+                                                    Text(plant.humidity ?? "Moderate")
                                                         .font(.custom("Baskervville-Regular", size: 14))
                                                         .foregroundColor(.black)
                                                     
@@ -182,7 +203,7 @@ struct ResultsDisplay: View {
                             
                             // Section 3 - Extra plant info
                             VStack(alignment: .leading, spacing: 6) {
-                                Text("Snake plants are available in dozens of varieties and cultivars, with stiff-sword like leaves colored in bands of green, yellow, and cream. It's a hard-to-kill plant that makes it a go-to for any newer plant parent or anyone not interested in weekly watering duties. and cream. It's a hard-to-kill plant that makes it a go-to for any newer plant parent or anyone not interested in weekly watering duties.and cream. It's a hard-to-kill plant that makes it a go-to for any newer plant parent or anyone not interested in weekly watering duties.")
+                                Text("Taxonomy Information:\n\nScientific Name: \(plant.scientificName)\nFamily: \(plant.family ?? "Unknown")\nGenus: \(plant.genus ?? "Unknown")\n\nThis information is sourced from the Global Biodiversity Information Facility (GBIF), the world's largest biodiversity database.")
                                 
                                     .font(.custom("Baskervville-Regular", size: 15))
                                     .foregroundColor(.black)
@@ -208,11 +229,24 @@ struct ResultsDisplay: View {
                 .frame(width: geo.size.width, height: geo.size.height)
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true) // Hide the default navigation bar
     }
 }
 
 struct ResultsDisplay_Previews: PreviewProvider {
     static var previews: some View {
-        ResultsDisplay()
+        ResultsDisplay(plant: Plant(from: GBIFSpecies(
+            key: 1,
+            scientificName: "Orchidaceae cattleya",
+            canonicalName: "Cattleya",
+            vernacularName: "Orchid",
+            family: "Orchidaceae",
+            genus: "Cattleya",
+            kingdom: "Plantae",
+            phylum: nil,
+            order: "Asparagales",
+            taxonomicStatus: "ACCEPTED"
+        )))
     }
 }
