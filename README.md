@@ -35,3 +35,11 @@ Florix is an **iOS Plant Index application** that allows users to **search for p
 | Mock HomePage V1  | Mock Results Display V1  |
 | ------------- | ------------- |
 | <img width="600" height="600" alt="new Homepage" src="https://github.com/user-attachments/assets/65c5202b-5752-41ae-b197-be651481808b" />    | <img width="600" height="600" alt="Overall Mockup" src="https://github.com/user-attachments/assets/01f3615b-58d6-4117-82ad-c13294969c18" />  |
+
+<br>
+
+## Fonts Space
+
+| Fonts Used  | Url |
+| ----------  | ----|
+| Baskervville-Regular.ttf | https://fonts.google.com/specimen/Baskervville |
